@@ -9,20 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var userIsInTheMiddleOfTyping = false
+    
     @IBOutlet weak var display: UILabel!
+    
     var displayValue: Double {
+        
         get {
             return Double(display.text!)!
         }
         set {
             display.text = String(newValue)
         }
+        
     }
     
-    var userIsInTheMiddleOfTyping = false
     
     @IBAction func performOperation(_ sender: UIButton) {
+        
         userIsInTheMiddleOfTyping = false
         if let mathematicalSymbol = sender.currentTitle {
             switch mathematicalSymbol {
@@ -34,7 +39,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchDigit(_ sender: UIButton) {
-        let digit = sender.currentTitle!
+        
+        let digit = sender.currentTitle! //Swift = Strong Type language
         if userIsInTheMiddleOfTyping {
             let textCurrentlyInDisplay = display.text!
             display.text = textCurrentlyInDisplay + digit
@@ -43,9 +49,14 @@ class ViewController: UIViewController {
             userIsInTheMiddleOfTyping = true
         }
     }
-
     
-    
-
 }
 
+/*
+ // external name && underbar means ther is no external use first parameter
+ func drawHorizontalLine(from startX: Double, to endX: Double, using color: UIColor) {
+ 
+ }
+ optional has two set {set or not set}
+ 
+ */
